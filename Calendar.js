@@ -15,16 +15,19 @@ calendarDiv.addEventListener("click", (e) => {
   const whatWasClicked = e.target.id;
   if (whatWasClicked.includes("day")) {
     const dayNum = parseInt(e.target.innerText);
-    date = dayjs().date(dayNum).month(month);
-    console.log(date, month);
+    date = dayjs().date(dayNum).month(month).year(date.year());
+
+    console.log(date);
   }
   if (whatWasClicked === "plusButton" || whatWasClicked === "arrowRight") {
     date = date.add(1, "month").date(1);
+    month = date.month();
     populateCalendar(date, calendarDiv);
     console.log(date);
   }
   if (whatWasClicked === "minusButton" || whatWasClicked === "arrowLeft") {
     date = date.subtract(1, "month").date(1);
+    month = date.month();
     populateCalendar(date, calendarDiv);
     console.log(date);
   }
