@@ -9,6 +9,28 @@ function getFirstDayOfMonth(date) {
 }
 // populate whole calendar with days of month in right order
 function populateCalendar(date, calendarDiv) {
+  calendarDiv.innerHTML = "";
+  const monthName = document.createElement("span");
+  monthName.setAttribute("id", "monthName");
+  monthName.setAttribute("class", "monthName");
+  monthName.innerText = date.format("MMMM YYYY");
+
+  const plusButton = document.createElement("button");
+  plusButton.setAttribute("id", "plusButton");
+  plusButton.setAttribute("class", "calendarButton");
+  plusButton.innerHTML =
+    '<img id="arrowRight" src="/assets/icons/arrow-big-right.svg"/>';
+
+  const minusButton = document.createElement("button");
+  minusButton.setAttribute("id", "minusButton");
+  minusButton.setAttribute("class", "calendarButton");
+  minusButton.innerHTML =
+    '<img id="arrowLeft" src="/assets/icons/arrow-big-left.svg"/>';
+
+  calendarDiv.appendChild(minusButton);
+  calendarDiv.appendChild(monthName);
+  calendarDiv.appendChild(plusButton);
+
   // populate calendar with names of weekdays in Polish
   weekDaysPl.forEach((item) => {
     const day = document.createElement("span");
